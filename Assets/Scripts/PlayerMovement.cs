@@ -35,8 +35,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (other.gameObject.tag == "Ground")
         {
-            Debug.Log("Hit ground");
             _jumping = false;
+        }
+        else if (other.gameObject.tag == "Knife")
+        {
+            Debug.Log("Stabbed");
+            _body.constraints = RigidbodyConstraints.None;
         }
     }
 }
