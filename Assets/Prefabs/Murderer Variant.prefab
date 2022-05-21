@@ -16,6 +16,18 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6699026484735596208, guid: a7e6c6328b47164459503f84c5ce9975, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6699026484735596208, guid: a7e6c6328b47164459503f84c5ce9975, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6699026484735596208, guid: a7e6c6328b47164459503f84c5ce9975, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6699026484735596208, guid: a7e6c6328b47164459503f84c5ce9975, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -25,7 +37,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6699026484735596208, guid: a7e6c6328b47164459503f84c5ce9975, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.00000011920929
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6699026484735596208, guid: a7e6c6328b47164459503f84c5ce9975, type: 3}
       propertyPath: m_LocalRotation.w
@@ -172,8 +184,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseSpeed: 1
-  maxRotateRadians: 0.5
-  maxRotateMagnitude: 1
 --- !u!4 &7257379206798267629 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 860866872732342928, guid: 179c56eba2aa4764db9a1d6fe596f597, type: 3}
