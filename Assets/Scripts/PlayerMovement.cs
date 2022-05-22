@@ -27,8 +27,14 @@ public class PlayerMovement : MonoBehaviour
             _jumping = true;
         }
 
-        gameObject.transform.position += Vector3.forward * vertical * moveSpeed * Time.deltaTime;
-        gameObject.transform.position += Vector3.right * horizontal * moveSpeed * Time.deltaTime;
+        var direction = new Vector3(horizontal, 0, vertical);
+        direction.Normalize();
+        transform.Translate(direction * moveSpeed * Time.deltaTime, Space.World);
+
+        if (direction != Vector3.zero)
+        {
+            transform.forward = direction;
+        }
     }
 
     private void OnCollisionEnter(Collision other)
