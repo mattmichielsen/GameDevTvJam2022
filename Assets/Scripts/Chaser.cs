@@ -19,8 +19,17 @@ public class Chaser : MonoBehaviour
     {
         if (_player != null)
         {
-            gameObject.transform.position += Vector3.ClampMagnitude(_player.transform.position - gameObject.transform.position, 1) * chaseSpeed * Time.deltaTime;
-            gameObject.transform.LookAt(_player.transform, Vector3.up);
+            var position = Vector3.ClampMagnitude(_player.transform.position - transform.position, 1) * chaseSpeed * Time.deltaTime;
+            if (_player.tag == "Player")
+            {
+                transform.position += position;
+                transform.LookAt(_player.transform, Vector3.up);
+            }
+            else if (_player.tag == "Ghost")
+            {
+                transform.position -= position;
+                transform.forward = -position;
+            }
         }
     }
 }

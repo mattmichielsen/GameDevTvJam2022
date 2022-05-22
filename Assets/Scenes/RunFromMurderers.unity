@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Murderer Variant (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7257379206798267628, guid: 85d8f2608065aa745974341bd1f4e468, type: 3}
+      propertyPath: m_TagString
+      value: Murderer
+      objectReference: {fileID: 0}
     - target: {fileID: 7257379206798267629, guid: 85d8f2608065aa745974341bd1f4e468, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -285,6 +289,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Murderer Variant (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7257379206798267628, guid: 85d8f2608065aa745974341bd1f4e468, type: 3}
+      propertyPath: m_TagString
+      value: Murderer
+      objectReference: {fileID: 0}
     - target: {fileID: 7257379206798267629, guid: 85d8f2608065aa745974341bd1f4e468, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -426,6 +434,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Murderer Variant (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7257379206798267628, guid: 85d8f2608065aa745974341bd1f4e468, type: 3}
+      propertyPath: m_TagString
+      value: Murderer
+      objectReference: {fileID: 0}
     - target: {fileID: 7257379206798267629, guid: 85d8f2608065aa745974341bd1f4e468, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -501,6 +513,10 @@ PrefabInstance:
     - target: {fileID: 7257379206798267628, guid: 85d8f2608065aa745974341bd1f4e468, type: 3}
       propertyPath: m_Name
       value: Murderer Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257379206798267628, guid: 85d8f2608065aa745974341bd1f4e468, type: 3}
+      propertyPath: m_TagString
+      value: Murderer
       objectReference: {fileID: 0}
     - target: {fileID: 7257379206798267629, guid: 85d8f2608065aa745974341bd1f4e468, type: 3}
       propertyPath: m_RootOrder
@@ -732,6 +748,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7257379206798267628, guid: 85d8f2608065aa745974341bd1f4e468, type: 3}
       propertyPath: m_Name
+      value: Murderer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257379206798267628, guid: 85d8f2608065aa745974341bd1f4e468, type: 3}
+      propertyPath: m_TagString
       value: Murderer
       objectReference: {fileID: 0}
     - target: {fileID: 7257379206798267629, guid: 85d8f2608065aa745974341bd1f4e468, type: 3}

@@ -8,12 +8,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float moveSpeed = 1;
 
     private Rigidbody _body;
+    private GameObject _bodyParts;
+    private GameObject _ghost;
     private bool _jumping;
 
     // Start is called before the first frame update
     void Start()
     {
         _body = GetComponent<Rigidbody>();
+        _bodyParts = transform.Find("BodyParts").gameObject;
+        _ghost = transform.Find("Ghost").gameObject;
     }
 
     // Update is called once per frame
@@ -43,10 +47,13 @@ public class PlayerMovement : MonoBehaviour
         {
             _jumping = false;
         }
-        else if (other.gameObject.tag == "Knife")
+        else if (other.gameObject.tag == "Knife" || other.gameObject.tag == "Murderer")
         {
             Debug.Log("Stabbed");
-            _body.constraints = RigidbodyConstraints.None;
+            _body.useGravity = false;
+            _bodyParts.SetActive(false);
+            _ghost.SetActive(true);
+            tag = "Ghost";
         }
     }
 }

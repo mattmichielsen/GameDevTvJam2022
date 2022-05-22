@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ground
   - Knife
+  - Ghost
+  - Murderer
   layers:
   - Default
   - TransparentFX
