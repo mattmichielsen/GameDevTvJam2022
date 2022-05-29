@@ -8,6 +8,7 @@ public class Chaser : MonoBehaviour
 
     private GameObject _player;
     private Rigidbody _body;
+    private bool _started;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,12 @@ public class Chaser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_player != null && chaseSpeed > 0)
+        if (!_started && (Mathf.Abs(Input.GetAxis("Horizontal")) > 0 || Mathf.Abs(Input.GetAxis("Vertical")) > 0))
+        {
+            _started = true;
+        }
+
+        if (_player != null && _started && chaseSpeed > 0)
         {
             var position = Vector3.ClampMagnitude(_player.transform.position - transform.position, 1) * chaseSpeed * Time.deltaTime;
             if (_player.tag == "Player")
