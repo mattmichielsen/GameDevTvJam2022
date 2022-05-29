@@ -1,3 +1,5 @@
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -6,11 +8,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float moveSpeed = 1;
     [SerializeField] float ghostSpeed = 2;
     [SerializeField] float ghostMass = 300;
+    [SerializeField] TextMeshProUGUI scoreUI;
 
     private Rigidbody _body;
     private GameObject _bodyParts;
     private GameObject _ghost;
     private bool _jumping;
+    private int _score = 0;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +44,11 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.forward = direction;
         }
+
+        if (scoreUI != null)
+        {
+            scoreUI.text = _score.ToString();
+        }
     }
 
     private void OnCollisionEnter(Collision other)
@@ -47,10 +57,25 @@ public class PlayerMovement : MonoBehaviour
         {
             _jumping = false;
         }
+        else if (gameObject.tag == "Ghost" && other.gameObject.tag == "Murderer")
+        {
+            _score += Kill(other.gameObject);
+        }
         else if (other.gameObject.tag == "Knife" || other.gameObject.tag == "Murderer")
         {
             Die();
         }
+    }
+
+    private int Kill(GameObject enemy)
+    {
+        var chaser = enemy.GetComponent<Chaser>();
+        if (chaser != null)
+        {
+            return chaser.Die();
+        }
+
+        return 0;
     }
 
     private void Die()
