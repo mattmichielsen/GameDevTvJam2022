@@ -1,6 +1,7 @@
 using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,12 +14,17 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreUI;
     [SerializeField] TextMeshProUGUI instructionsUI;
     [SerializeField] Light mainLight;
+    [SerializeField] AudioClip startAudio;
+    [SerializeField] AudioClip dieAudio;
+    [SerializeField] AudioClip killAudio;
 
     private Rigidbody _body;
     private GameObject _bodyParts;
     private GameObject _ghost;
+    private AudioSource _audioSource;
     private bool _jumping;
     private int _score = 0;
+    private bool _firstMove = false;
     private bool _gameOver = false;
 
 
@@ -28,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
         _body = GetComponent<Rigidbody>();
         _bodyParts = transform.Find("BodyParts")?.gameObject;
         _ghost = transform.Find("Ghost")?.gameObject;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -55,12 +62,21 @@ public class PlayerMovement : MonoBehaviour
 
         if (direction != Vector3.zero)
         {
-            if (instructionsUI != null)
-            {
-                instructionsUI.enabled = _gameOver;
-            }
-
             transform.forward = direction;
+            if (!_firstMove)
+            {
+                if (instructionsUI != null)
+                {
+                    instructionsUI.enabled = _gameOver;
+                }
+
+                if (startAudio != null)
+                {
+                    _audioSource.PlayOneShot(startAudio);                
+                }
+
+                _firstMove = true;
+            }
         }
 
         if (scoreUI != null)
@@ -105,6 +121,11 @@ public class PlayerMovement : MonoBehaviour
         var chaser = enemy.GetComponent<Chaser>();
         if (chaser != null)
         {
+            if (chaser.IsAlive && killAudio != null && !_audioSource.isPlaying)
+            {
+                _audioSource.PlayOneShot(killAudio);
+            }
+
             return chaser.Die();
         }
 
@@ -113,6 +134,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Die()
     {
+        if (dieAudio != null)
+        {
+            _audioSource.Stop();
+            _audioSource.PlayOneShot(dieAudio);
+        }
+
         _body.mass = ghostMass;
         moveSpeed = ghostSpeed;
         _bodyParts.SetActive(false);

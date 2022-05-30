@@ -3,6 +3,7 @@ using UnityEngine;
 public class Chaser : MonoBehaviour
 {
     [SerializeField] float chaseSpeed = 1;
+    [SerializeField] AudioClip escapeAudio;
 
     public bool IsAlive
     {
@@ -14,6 +15,7 @@ public class Chaser : MonoBehaviour
 
     private GameObject _player;
     private Rigidbody _body;
+    private AudioSource _audioSource;
     private bool _started;
 
     // Start is called before the first frame update
@@ -21,6 +23,7 @@ public class Chaser : MonoBehaviour
     {
         _player = GameObject.FindGameObjectWithTag("Player");
         _body = GetComponent<Rigidbody>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -46,8 +49,13 @@ public class Chaser : MonoBehaviour
             }
         }
 
-        if (transform.position.y < 0)
+        if (transform.position.y < 0 && IsAlive)
         {
+            if (escapeAudio != null)
+            {
+                _audioSource.PlayOneShot(escapeAudio);
+            }
+
             Die();
         }
     }

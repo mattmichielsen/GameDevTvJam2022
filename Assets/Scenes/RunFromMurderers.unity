@@ -1180,10 +1180,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 705507994}
     - target: {fileID: 2104917625, guid: 620426ef91c60234995e1564b2f69e24, type: 3}
-      propertyPath: gameOverUI
-      value: 
-      objectReference: {fileID: 1675495913}
-    - target: {fileID: 2104917625, guid: 620426ef91c60234995e1564b2f69e24, type: 3}
       propertyPath: instructionsUI
       value: 
       objectReference: {fileID: 1675495913}
