@@ -56,6 +56,11 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.tag == "Ground")
         {
             _jumping = false;
+            if (gameObject.tag == "Ghost")
+            {
+                _body.constraints = RigidbodyConstraints.FreezePositionY;
+                _body.useGravity = false;
+            }
         }
         else if (gameObject.tag == "Ghost" && other.gameObject.tag == "Murderer")
         {
@@ -80,8 +85,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Die()
     {
-        _body.constraints = RigidbodyConstraints.FreezePositionY;
-        _body.useGravity = false;
         _body.mass = ghostMass;
         moveSpeed = ghostSpeed;
         _bodyParts.SetActive(false);
