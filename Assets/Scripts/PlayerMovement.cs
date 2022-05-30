@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float ghostMass = 300;
     [SerializeField] TextMeshProUGUI scoreUI;
     [SerializeField] TextMeshProUGUI instructionsUI;
+    [SerializeField] Light mainLight;
 
     private Rigidbody _body;
     private GameObject _bodyParts;
@@ -25,8 +26,8 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         _body = GetComponent<Rigidbody>();
-        _bodyParts = transform.Find("BodyParts").gameObject;
-        _ghost = transform.Find("Ghost").gameObject;
+        _bodyParts = transform.Find("BodyParts")?.gameObject;
+        _ghost = transform.Find("Ghost")?.gameObject;
     }
 
     // Update is called once per frame
@@ -54,7 +55,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (direction != Vector3.zero)
         {
-            instructionsUI.enabled = _gameOver;
+            if (instructionsUI != null)
+            {
+                instructionsUI.enabled = _gameOver;
+            }
+
             transform.forward = direction;
         }
 
@@ -113,6 +118,10 @@ public class PlayerMovement : MonoBehaviour
         _bodyParts.SetActive(false);
         _ghost.SetActive(true);
         tag = "Ghost";
+        if (mainLight != null)
+        {
+            mainLight.intensity = 0.05f;
+        }
     }
 
     private int GetActiveChaserCount()
