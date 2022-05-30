@@ -1,10 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Chaser : MonoBehaviour
 {
     [SerializeField] float chaseSpeed = 1;
+
+    public bool IsAlive
+    {
+        get
+        {
+            return chaseSpeed > 0;
+        }
+    }
 
     private GameObject _player;
     private Rigidbody _body;
