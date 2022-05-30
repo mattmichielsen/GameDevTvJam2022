@@ -45,6 +45,11 @@ public class Chaser : MonoBehaviour
                 transform.forward = -position;
             }
         }
+
+        if (transform.position.y < 0)
+        {
+            Die();
+        }
     }
 
     public int Die()
