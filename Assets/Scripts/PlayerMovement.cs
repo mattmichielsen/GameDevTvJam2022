@@ -63,9 +63,8 @@ public class PlayerMovement : MonoBehaviour
             scoreUI.text = _score.ToString();
         }
 
-        if (!_gameOver && GetActiveChaserCount() == 0)
+        if (!_gameOver && (GetActiveChaserCount() == 0 || transform.position.y < 0))
         {
-            Debug.Log("Game over!");
             _gameOver = true;
             if (instructionsUI != null)
             {
